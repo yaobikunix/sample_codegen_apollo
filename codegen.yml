@@ -1,0 +1,26 @@
+#codegen.ymlの場合はこっち
+overwrite: true
+schema: "https://swapi-graphql.netlify.app/.netlify/functions/index"
+documents: "src/**/*.graphql"
+generates:
+  src/graphqls/generated.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
+
+
+# こっちは主にcodegen.tsで設定する場合
+# overwrite: true
+# schema: "https://swapi-graphql.netlify.app/"
+# documents: "src/graphql/**/*.tsx"
+# generates:
+#   src/generated/:
+#     preset: "client"
+#     plugins: []
+#   ./graphql.schema.json:
+#     plugins:
+#       - "introspection"
