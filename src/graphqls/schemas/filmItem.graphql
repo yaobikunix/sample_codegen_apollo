@@ -1,0 +1,26 @@
+fragment FilmItem on Film {
+    id
+    title
+    releaseDate
+    director
+}
+
+query allFilmsWithVariablesQuery($first: Int!) {
+    allFilms(first: $first) {
+        edges {
+            node {
+                ...FilmItem
+            }
+        }
+    }
+}
+
+# query allFilmsWithVariablesQuery($first: Int!) {
+#     allFilms(first: $first) {
+#         edges {
+#             node {
+#                 ...FilmItem！
+#             }
+#         }
+#     }
+# }
