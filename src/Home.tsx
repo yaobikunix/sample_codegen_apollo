@@ -22,10 +22,13 @@ function Home() {
                     <Route path="/film" element={<Film />} />
                 </Routes>
 
-
             </Router>
         </>
     )
 }
 
 export default Home
+
+const button = {
+    backgroundColor: 'aquamarine'
+}

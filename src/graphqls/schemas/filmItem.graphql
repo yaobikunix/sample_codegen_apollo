@@ -14,13 +14,3 @@ query allFilmsWithVariablesQuery($first: Int!) {
         }
     }
 }
-
-# query allFilmsWithVariablesQuery($first: Int!) {
-#     allFilms(first: $first) {
-#         edges {
-#             node {
-#                 ...FilmItem！
-#             }
-#         }
-#     }
-# }
