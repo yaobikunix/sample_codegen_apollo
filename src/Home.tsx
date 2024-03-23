@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import App from './App.tsx'
+
 import './Home.css'
+import App from './App.tsx'
 import Film from './Film.tsx'
 
 function Home() {
+
     return(
         <>
             <Router>
@@ -13,7 +15,7 @@ function Home() {
                         <>
                             <App />
                             <Link to="/film">
-                                <button style={{backgroundColor: 'aquamarine'}}>To Film</button>
+                                <button style={{backgroundColor: 'lightsteelblue'}}>To Film</button>
                             </Link>
                         </>
                     } />
@@ -21,14 +23,9 @@ function Home() {
                     {/* Filmパスでの設定 */}
                     <Route path="/film" element={<Film />} />
                 </Routes>
-
             </Router>
         </>
     )
 }
 
 export default Home
-
-const button = {
-    backgroundColor: 'aquamarine'
-}
