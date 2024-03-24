@@ -5,7 +5,7 @@ import {
 } from './graphqls/generated';
 import Client from './lib/client';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Film = () => {
@@ -17,26 +17,31 @@ const Film = () => {
 
   useEffect(() => {
     async function fetchFilms() {
-      const { data } = await Client.query<AllFilmsWithVariablesQueryQuery, AllFilmsWithVariablesQueryQueryVariables>({
-        query: AllFilmsWithVariablesQueryDocument,
-        variables: {
-          first: getItemCount
-        }
-      })
+      try {
+        const { data } = await Client.query<AllFilmsWithVariablesQueryQuery, AllFilmsWithVariablesQueryQueryVariables>({
+          query: AllFilmsWithVariablesQueryDocument,
+          variables: {
+            first: getItemCount
+          }
+        });
 
-      // 取得したデータで状態を更新
-      setFilms(data)
+        // 取得したデータで状態を更新
+        setFilms(data);
+        alert('フィルムデータを取得しました。');
+      } catch (error) {
+        console.error("データの取得中にエラーが発生しました:", error);
+      }
     }
 
-    fetchFilms()
-    alert('フィルムデータを取得しました。')
-  }, [])
+    // フィルムデータを取得する
+    fetchFilms();
+  }, [getItemCount])
 
   // データがロードされたかどうかを確認し、そうでなければローディングインジケーターを表示する
   if (!films?.allFilms?.edges) {
     return <div>Now Loading...</div>
   }
-  console.log(films?.allFilms?.edges)
+  console.log(films?.allFilms?.edges);
 
   return (
     <>
